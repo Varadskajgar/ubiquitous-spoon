@@ -1,12 +1,13 @@
 # Realistic Mart
 
-Monorepo starter for:
-- `Website/`: Next.js + TypeScript storefront
-- `Application/`: Flutter mobile app
-- `Config/`: shared brand/theme reference and environment templates
-- Shopify: commerce catalogue, carts, checkout and order system
-- Razorpay: server-created payment orders and signature verification
-- Firebase: web authentication and FCM setup
-- Admin: protected starter dashboard; production permissions must be configured server-side
+Monorepo starter for the Realistic Mart ecommerce website and Flutter app.
 
-Read `Documentation/SETUP.md` before running. This is a starter foundation, not a production-ready deployment. Real API credentials and provider-side setup are required.
+- `Website/` — Next.js + TypeScript.
+- `Application/` — Flutter app, including browser preview.
+- `Config/` — shared theme and environment templates.
+- `Worker/` — Cloudflare Worker Shopify API gateway.
+- `Documentation/` — setup steps and current feature limitations.
+
+The website and Flutter app use the same Cloudflare Worker URL for Shopify product data. Shopify app credentials stay in Cloudflare Worker Secrets, not in either client app.
+
+Read `Documentation/SETUP.md` before deployment. Real credentials are intentionally not included in this ZIP.
