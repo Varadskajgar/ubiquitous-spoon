@@ -1,0 +1,6 @@
+import SiteHeader from "@/components/SiteHeader";
+import {shopify,PRODUCTS_QUERY} from "@/lib/shopify";
+type P={id:string;handle:string;title:string;priceRange:{minVariantPrice:{amount:string;currencyCode:string}};featuredImage?:{url:string}|null};
+export default async function Home(){let products:P[]=[];let error="";
+try{const d=await shopify<{products:{nodes:P[]}}>(PRODUCTS_QUERY,{first:4});products=d.products.nodes;}catch(e){error=e instanceof Error?e.message:"Shopify connection unavailable";}
+return <main className="shell"><SiteHeader/><section className="hero"><div><p className="muted">THE REALISTIC MART EDIT</p><h1>Find your<br/>next favourite.</h1><p className="muted">Thoughtful essentials. Everyday upgrades.</p><a className="button" href="/shop">Explore collection</a></div><div className="hero-art">RM</div></section><section className="section"><h2>Trending now</h2>{error&&<p className="notice">{error}</p>}<div className="grid">{products.map(p=><a className="card" href={`/product/${p.handle}`} key={p.id}><div className="placeholder">{p.featuredImage?<img src={p.featuredImage.url} alt="" style={{width:"100%",height:"100%",objectFit:"contain"}}/>:"RM"}</div><h3>{p.title}</h3><b>{p.priceRange.minVariantPrice.currencyCode} {p.priceRange.minVariantPrice.amount}</b></a>)}</div></section><footer className="footer">© Realistic Mart</footer></main>}

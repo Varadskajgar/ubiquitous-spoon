@@ -1,0 +1,2 @@
+import SiteHeader from "@/components/SiteHeader";
+export default function Cart(){return <main className="shell"><SiteHeader/><section className="section"><h1>Your cart</h1><p className="notice">Shopify cart session UI placeholder. Product and variant cart-line mutation should be wired to persistent cart storage before launch.</p><a className="button" href="/shop">Continue shopping</a></section></main>}

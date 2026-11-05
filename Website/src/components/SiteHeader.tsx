@@ -1,0 +1,1 @@
+export default function SiteHeader(){return <header><a className="logo" href="/">REALISTIC MART</a><nav className="nav"><a href="/shop">Shop</a><a href="/billing">Plans</a><a href="/account">Account</a><a href="/cart">Cart</a></nav></header>}

@@ -1,0 +1,4 @@
+"use client";
+import SiteHeader from "@/components/SiteHeader";import {auth} from "@/lib/firebase";
+export default function Admin(){async function check(){const user=auth?.currentUser;if(!user){alert("Please sign in first.");return}try{const token=await user.getIdToken();const r=await fetch("/api/admin/check",{headers:{Authorization:`Bearer ${token}`}});const j=await r.json();alert(j.message||"");}catch{alert("Admin verification failed.")}}
+return <main className="shell"><SiteHeader/><section className="section"><h1>Admin dashboard</h1><p className="notice">Protected starter dashboard. Full catalogue, order, customer, inventory and discount management remains in Shopify Admin until secure Admin API routes are implemented.</p><button onClick={check}>Verify admin access</button><p><a className="button" href="https://admin.shopify.com/" target="_blank">Open Shopify Admin</a></p></section></main>}
